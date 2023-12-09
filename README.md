@@ -6,3 +6,5 @@ Order food: mua.html
 Kitchen & price update: nhanhang.html
 
 Order recive: nhanhang.html
+
+MySQL database: databasequanan.sql
