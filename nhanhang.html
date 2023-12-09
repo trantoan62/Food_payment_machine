@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Nhận hàng</title>
+    <link rel="icon" type="image/x-icon" href="images/anhnhom.ico">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/stylequanly.css">
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo"><i class="fas fa-utensils"></i> Client nhận hàng </a>
+</header>
+
+<br><br><br><br>
+
+<form action="" id="muaban">
+    <div class="box-container1">
+        <h1 style="padding-top: 1.5%; font-size: 2.5rem ;">Đơn hàng đã sẵn sàng</h1>
+        <table class="responstable" id = "responstable" style="font-size: 1.3rem;">
+            <tr>
+              <th>ID</th>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+        </table><br>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <span class="btn" onclick="nhanhang()" style="align-items: center; justify-content: center; margin-left: auto; margin-right: auto; display: flex;"><b>Xác nhận</b></span>
+        </div>
+    </div>
+</form>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function(){
+        document.querySelector('#muaban').classList.toggle('active');
+        updatebang();
+        updatemoiphut();
+    });
+
+</script>
+<script type="text/javascript">
+   
+    var table = document.getElementById('responstable'); 
+    var rowCount = table.rows.length - 1;
+    var row = table.insertRow(rowCount);
+    var cell0;
+   
+    function updatebang(){
+        rowCount = table.rows.length - 1;  
+        for (rowCount; rowCount > 0; rowCount--) {  
+            table.deleteRow(rowCount);  
+        }
+        setTimeout(function(){
+            $.ajax({
+                url: "/php/nhanhang/quanlynhanhang.php",
+                method: "POST",
+                data: {heocon : 1},
+                success: function(data){
+                    data.forEach(element => {
+                        rowCount += 1;
+                        row = table.insertRow(rowCount);
+                        cell0 = row.insertCell(0);
+                        cell0.innerHTML = element.stt;
+                    });
+                }
+            });
+        },1000)
+    }
+
+    var thoigian;
+    function updatemoiphut(){
+        clearInterval(thoigian);
+        thoigian = setInterval(function(){
+            updatebang();
+        },30000);
+    }
+
+
+    function nhanhang(){
+        clearInterval(thoigian);
+        const malayhang = prompt('Xin nhập mã lấy hàng');
+        $.ajax({
+            url: "/php/nhanhang/malayhang.php",
+            method: "POST",
+            data: {malayhang : parseInt(malayhang)},
+            success: function(data){
+                alert(data);
+            }
+        });
+        updatebang();
+        updatemoiphut();
+    };
+</script>
+
+</body>
+</html>

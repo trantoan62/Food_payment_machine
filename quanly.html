@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quản lý</title>
+    <link rel="icon" type="image/x-icon" href="images/anhnhom.ico">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/stylequanly.css">
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo"><i class="fas fa-utensils"></i> Client quản lý </a>
+    <h1><select name="listbox" id="listbox" onchange="listboxx()" style="font-family: 'Nunito', sans-serif; font-size: 1.6rem;">
+        <option value="muaban"> <h1>Quản lý mua bán</h1></option>
+        <option value="dieuchinhgia"><h1>Điều chỉnh giá</h1></option>
+    </select></h1>
+</header>
+
+<br><br><br><br>
+
+<form action="" id="muaban">
+    <div class="box-container1">
+        <h1 style="padding-top: 1.5%; font-size: 2.5rem ;">Quản lý mua bán</h1>
+        <table class="responstable" id = "responstable" style="font-size: 1.2rem;">
+            <tr>
+              <th>ID</th>
+              <th>Đã nấu xong</th>
+              <th>Đã lấy hàng</th>
+              <th>Mã lấy hàng</th>
+              <th>Số tiền</th>
+              <th>Cơm tấm</th>
+              <th>Cơm gà</th>
+              <th>Phở bò</th>
+              <th>Bún bò Huế</th>
+              <th>Bánh mì</th>
+              <th>Gỏi cuốn</th>
+              <th>Ngày mua</th>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+        </table><br>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <span class="btn" onclick="updatemuaban()" style="align-items: center; justify-content: center; margin-left: auto; margin-right: auto; display: flex;"><b>Xác nhận</b></span>
+        </div>
+    </div>
+</form>
+
+<form action="" id="dieuchinhgia">
+    <div class="box-container1">
+        <h1 style="padding-top: 1.5%; font-size: 2.5rem ;">Điều chỉnh giá</h1>
+        <table class="responstable" style="font-size: 2rem ;">
+            <tr>
+                <th>Cơm tấm</th>
+                <th>Cơm gà</th>
+                <th>Phở bò</th>
+                <th>Bún bò Huế</th>
+                <th>Bánh mì</th>
+                <th>Gỏi cuốn</th>
+            </tr>
+            <tr>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giacomtam" type="number" value="25" onkeydown="return event.keyCode !== 69"></div>K</td>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giacomga" type="number" value="25" onkeydown="return event.keyCode !== 69"></div>K</td>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giaphobo" type="number" value="25" onkeydown="return event.keyCode !== 69"></div>K</td>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giabunbohue" type="number" value="30" onkeydown="return event.keyCode !== 69"></div>K</td>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giabanhmi" type="number" value="10" onkeydown="return event.keyCode !== 69"></div>K</td>
+                <td><div class="buttons_added"><input aria-label="quantity" class="input-qty" max="3000" min="0" name="giagoicuon" type="number" value="5" onkeydown="return event.keyCode !== 69"></div>K</td>
+            </tr>
+        </table><br>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <span class="btn" onclick="capnhatgia()" style="align-items: center; justify-content: center; margin-left: auto; margin-right: auto; display: flex;"><b>Xác nhận</b></span>
+        </div>
+    </div>
+</form>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function(){
+        document.querySelector('#muaban').classList.toggle('active');
+        document.querySelector('#dieuchinhgia').classList.remove('active');
+        updatebang();
+        updatemoiphut();
+    });
+    var x;
+    function listboxx() {
+        x = document.getElementById("listbox").value;
+        if (x == "muaban") {
+            document.querySelector('#muaban').classList.toggle('active');
+            document.querySelector('#dieuchinhgia').classList.remove('active');
+            updatebang();
+            updatemoiphut();
+        } else if (x == "dieuchinhgia"){
+            clearInterval(thoigian);
+            document.querySelector('#dieuchinhgia').classList.toggle('active');
+            document.querySelector('#muaban').classList.remove('active');
+        }
+    };
+
+</script>
+<script type="text/javascript">
+    var comtam = 0, comga = 0, phobo = 0, bunbohue = 0, banhmi = 0, goicuon = 0;
+    function capnhatgia() {
+        comtam = parseInt(document.getElementsByName("giacomtam")[0].value);
+        comga = parseInt(document.getElementsByName("giacomga")[0].value);
+        phobo = parseInt(document.getElementsByName("giaphobo")[0].value);
+        bunbohue = parseInt(document.getElementsByName("giabunbohue")[0].value);
+        banhmi = parseInt(document.getElementsByName("giabanhmi")[0].value);
+        goicuon = parseInt(document.getElementsByName("giagoicuon")[0].value);
+
+        $.ajax({
+            url: "/php/quanly/capnhatgia.php",
+            method: "POST",
+            data: {comtam: comtam, comga: comga, phobo: phobo, bunbohue: bunbohue, banhmi: banhmi, goicuon: goicuon},
+            success: function(){alert("Đã cập nhật!")}
+        });
+    }
+
+    var table = document.getElementById('responstable'); 
+    var rowCount = table.rows.length - 1;
+    var row = table.insertRow(rowCount);
+    var cell0, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10, cell11;
+   
+    function updatebang(){
+        rowCount = table.rows.length - 1;  
+        for (rowCount; rowCount > 0; rowCount--) {  
+            table.deleteRow(rowCount);  
+        }
+        setTimeout(function(){
+            $.ajax({
+                url: "/php/quanly/quanlymuaban.php",
+                method: "POST",
+                data: {heocon : 1},
+                success: function(data){
+                    data.forEach(element => {
+
+                        rowCount += 1;
+                        row = table.insertRow(rowCount);
+
+                        cell0 = row.insertCell(0);
+                        cell0.innerHTML = element.stt;
+
+                        cell1 = row.insertCell(1);
+                        element1 = document.createElement("input");
+                        element1.type = "checkbox";  
+                        element1.id = "checkbox"+rowCount; 
+                        cell1.appendChild(element1);
+
+                        cell2 = row.insertCell(2);
+                        cell2.innerHTML = element.dalayhang;
+                        cell3 = row.insertCell(3);
+                        cell3.innerHTML = element.malayhang;
+                        cell4 = row.insertCell(4);
+                        cell4.innerHTML = element.sotien;
+                        cell5 = row.insertCell(5);
+                        cell5.innerHTML = element.comtam;
+                        cell6 = row.insertCell(6);
+                        cell6.innerHTML = element.comga;
+                        cell7 = row.insertCell(7);
+                        cell7.innerHTML = element.phobo;
+                        cell8 = row.insertCell(8);
+                        cell8.innerHTML = element.bunbohue;
+                        cell9 = row.insertCell(9);
+                        cell9.innerHTML = element.banhmi;
+                        cell10 = row.insertCell(10);
+                        cell10.innerHTML = element.goicuon;
+                        cell11 = row.insertCell(11);
+                        cell11.innerHTML = element.ngaymua;     
+                    });
+                }
+            });
+        },1000)
+    }
+
+    var thoigian;
+    function updatemoiphut(){
+        clearInterval(thoigian);
+        thoigian = setInterval(function(){
+            updatebang();
+        },30000);
+    }
+    var check1, j = 0;
+    function updatemuaban(){
+        clearInterval(thoigian);
+        j = 0;
+        const dataa = [];
+        rowCount = table.rows.length;  
+        for (var i = 1; i < rowCount; i++) {  
+            check1 = document.getElementById("checkbox"+i);
+            if (check1.checked == false){}
+            else {dataa[j] = table.rows.item(i).cells.item(0).innerHTML; j++;}
+        }
+        dataa.forEach(element => {
+            $.ajax({
+                url: "/php/quanly/danauxong.php",
+                method: "POST",
+                data: {stt : parseInt(element)}
+            });
+        });
+        updatebang();
+        updatemoiphut();
+    }
+
+</script>
+
+</body>
+</html>

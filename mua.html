@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mua</title>
+    <link rel="icon" type="image/x-icon" href="images/anhnhom.ico">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    
+<!-- header section starts      -->
+
+<header>
+
+    <a href="#" class="logo"><i class="fas fa-utensils"></i> Quán TNHT</a>
+
+    <nav class="navbar">
+        <a class="active" href="#home">Trang chủ</a>
+        <a href="#dishes">Thực đơn</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-shopping-cart" id="shopping-cart-icon">
+            <span style="position: absolute; top: 0.26rem; padding-right: 5%; font-size: 1.02rem;" id ="cart-num" >0</span>
+        </i>
+    </div>
+
+</header>
+
+<!-- header section ends-->
+
+<!-- shopping-cart form  -->
+
+<form action="" id="shopping-cart-form">
+    <div class="box-container1">
+        <h1 style="padding-top: 1.5%; font-size: 2.5rem ;">Giỏ hàng của bạn</h1>
+        <table class="responstable">
+            <tr>
+              <th><h1>STT</h1></th>
+              <th><h1>Sản phẩm</h1></th>
+              <th><h1>Đơn giá</h1></th>
+              <th><h1>Số lượng</h1></th>
+              <th><h1>Thành tiền</h1></th>
+            </tr>
+            <tr>
+                <td><h1>1</h1></td>
+                <td><h1>Cơm tấm</h1></td>
+                <td><h1 id ="giacuacomtam">25k</h1></td>
+                <td><h1>        
+                    <div class ="heocon">
+                        <span class="minus" id="minus1">-</span>
+                        <span class="num" id="num1">00</span>
+                        <span class="plus" id="plus1" onclick="plus11()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien1"></h1></td>
+            </tr>
+            <tr>
+                <td><h1>2</h1></td>
+                <td><h1>Cơm gà</h1></td>
+                <td><h1 id ="giacuacomga">25k</h1></td>
+                <td><h1>
+                    <div class ="heocon">
+                        <span class="minus" id="minus2">-</span>
+                        <span class="num" id="num2">00</span>
+                        <span class="plus" id="plus2" onclick="plus22()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien2"></h1></td>
+            </tr>
+            <tr>
+                <td><h1>3</h1></td>
+                <td><h1>Phở bò</h1></td>
+                <td><h1 id ="giacuaphobo">25k</h1></td>
+                <td><h1>
+                    <div class ="heocon">
+                        <span class="minus" id="minus3">-</span>
+                        <span class="num" id="num3">00</span>
+                        <span class="plus" id="plus3" onclick="plus33()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien3"></h1></td>
+            </tr>
+            <tr>
+                <td><h1>4</h1></td>
+                <td><h1>Bún bò Huế</h1></td>
+                <td><h1 id ="giacuabunbohue">30k</h1></td>
+                <td><h1>
+                    <div class ="heocon">
+                        <span class="minus" id="minus4">-</span>
+                        <span class="num" id="num4">00</span>
+                        <span class="plus" id="plus4" onclick="plus44()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien4"></h1></td>
+            </tr>
+            <tr>
+                <td><h1>5</h1></td>
+                <td><h1>Bánh mì</h1></td>
+                <td><h1 id ="giacuabanhmi">10k</h1></td>
+                <td><h1>
+                    <div class ="heocon">
+                        <span class="minus" id="minus5">-</span>
+                        <span class="num" id="num5">00</span>
+                        <span class="plus" id="plus5" onclick="plus55()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien5"></h1></td>
+            </tr>
+            <tr>
+                <td><h1>6</h1></td>
+                <td><h1>Gỏi cuốn</h1></td>
+                <td><h1 id ="giacuagoicuon">5k</h1></td>
+                <td><h1>
+                    <div class ="heocon">
+                        <span class="minus" id="minus6">-</span>
+                        <span class="num" id="num6">00</span>
+                        <span class="plus" id="plus6" onclick="plus66()">+</span>
+                    </div>
+                </h1></td>
+                <td><h1 id ="thanhtien6"></h1></td>
+            </tr>
+            <tr>
+                <td colspan="4"><h1>Tổng cộng:</h1></td>
+                <td><h1 id ="thanhtienall"></h1></td>
+            </tr>
+        </table><br>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <span class="btn" onclick="xoaluachon()" style="align-items: center; justify-content: center; margin-left: auto; margin-right: auto; display: flex;"><b>Xóa lựa chọn</b></span>
+            <span class="btn" onclick="xacnhann()" style="align-items: center; justify-content: center; margin-left: auto; margin-right: auto; display: flex;"><b>Xác nhận</b></span>
+        </div>
+    </div>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="swiper-container home-slider">
+
+        <div class="swiper-wrapper wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>Thực đơn đặc biệt hôm nay</span>
+                    <h3>Bánh mì</h3>
+                    <p>Với sự tinh túy và tinh hoa của trời đất đã gộp lại cùng với công nghệ vi sinh để tạo nên một chiếc bánh mì hoàn hảo.</p>
+                    <button class="btn" onclick ="cart()">Đặt ngay</button >
+                </div>
+                <div class="image">
+                    <img src="images/home-img-1.png" alt="">
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>Thực đơn đặc biệt hôm nay</span>
+                    <h3>Cơm tấm</h3>
+                    <p>Món ăn đặc trưng của Sài Gòn nay được biến tấu theo phong cách Âu Mỹ,
+                        toát lên vẻ quý's tộc's trong bạn.</p>
+                    <button class="btn" onclick ="cart()">Đặt ngay</button >
+                </div>
+                <div class="image">
+                    <img src="images/home-img-2.png" alt="">
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="content">
+                    <span>Thực đơn đặc biệt hôm nay</span>
+                    <h3>Cơm gà</h3>
+                    <p>Món ăn được chế biến bằng hệ thống chiên không dầu hiện đại, rất ngon mà không sợ béo.</p>
+                    <button class="btn" onclick ="cart()">Đặt ngay</button >
+                </div>
+                <div class="image">
+                    <img src="images/home-img-3.png" alt="">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- dishes section starts  -->
+
+<section class="dishes" id="dishes">
+
+    <h1 class="heading"> Thực đơn </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/comtam.png" alt="">
+            <h3>Cơm Tấm</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span id = "dishcomtam">25.000đ</span>
+            <p class="btn" onclick="plus11()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/comga.png" alt="">
+            <h3>Cơm Gà</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span id = "dishcomga">25.000đ</span>
+            <p class="btn" onclick="plus22()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/phobo.png" alt="">
+            <h3>Phở Bò</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span id = "dishphobo">25.000đ</span>
+            <p class="btn" onclick="plus33()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/bunbohue.png" alt="">
+            <h3>Bún Bò Huế</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span id = "dishbunbohue">30.000đ</span>
+            <p class="btn" onclick="plus44()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/banhmi.png" alt="">
+            <h3>Bánh Mì</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span id = "dishbanhmi">10.000đ</span>
+            <p class="btn" onclick="plus55()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-shopping-cart" id="shopping-cart-icon2" onclick ="cart()"></i>
+            <img src="images/goicuon.png" alt="">
+            <h3>Gỏi Cuốn</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span id = "dishgoicuon">5.000đ</span>
+            <p class="btn" onclick="plus66()"><b>Thêm vào giỏ</b></p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- dishes section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+    <div class="credit"> 
+        <p style="padding-bottom: 1rem; text-align: left; padding-left: 6rem;">Written by: </p>
+        <a href="https://www.facebook.com/toanbanxoi/" style="padding-left: 8rem;"> <b> Tran Quoc Toan - 19146090 </b></a>
+        <a href="https://www.facebook.com/hoang.hoa.52831666" style="padding-left: 3rem;"><b> Le Hoang Hoa - 19146122 </b></a>
+        <a href="https://www.facebook.com/profile.php?id=100010132369077" style="padding-left: 3rem;"><b> Pham Tu Nhi - 19146102 </b></a>.    
+        <br>
+    </div>
+</section>
+
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery-3.6.0.js"></script>
+
+<script type="text/javascript">
+    var giacomtam = 0, giacomga = 0, giaphobo = 0, giabunbohue = 0, giabanhmi = 0, giagoicuon = 0;
+$(document).ready(function(){
+        $.ajax({
+                url: "/php/mua/thaydoigia.php",
+                method: "post",
+                data: {heocon : 1},
+                success: function(data){
+                    giacomtam = parseInt(data[0].comtam);
+                    giacomga = parseInt(data[0].comga);
+                    giaphobo = parseInt(data[0].phobo);
+                    giabunbohue = parseInt(data[0].bunbohue);
+                    giabanhmi = parseInt(data[0].banhmi);
+                    giagoicuon = parseInt(data[0].goicuon);
+                    document.querySelector('#giacuacomtam').innerText = giacomtam +'K';
+                    document.querySelector('#giacuacomga').innerText = giacomga +'K';
+                    document.querySelector('#giacuaphobo').innerText = giaphobo +'K';
+                    document.querySelector('#giacuabunbohue').innerText = giabunbohue +'K';
+                    document.querySelector('#giacuabanhmi').innerText = giabanhmi +'K';
+                    document.querySelector('#giacuagoicuon').innerText = giagoicuon +'K';
+                    document.querySelector('#dishcomtam').innerText = giacomtam +'.000đ';
+                    document.querySelector('#dishcomga').innerText = giacomga +'.000đ';
+                    document.querySelector('#dishphobo').innerText = giaphobo +'.000đ';
+                    document.querySelector('#dishbunbohue').innerText = giabunbohue +'.000đ';
+                    document.querySelector('#dishbanhmi').innerText = giabanhmi +'.000đ';
+                    document.querySelector('#dishgoicuon').innerText = giagoicuon +'.000đ';
+                }
+        });
+});
+    var bientam = 0 ;
+    var thoigian, Id = 0;
+    function xacnhann(){
+      bientam = 0;
+        if (tempmax == 0) {
+            alert("Xin lựa chọn món trước!");
+        }
+        else if (tempmax != 0) {
+            randomstring = '';
+            for (var i=0; i<lenString; i++) {
+                rnum = Math.floor(Math.random() * characters.length);
+                randomstring += characters.substring(rnum, rnum+1);
+            }
+            alert("naptiendi")
+            $.ajax({
+              url: "/php/mua/checktrangthai.php",
+              method: "POST",
+              data: {heocon: 1},
+              success: function(data){
+                  bientam = parseInt(data[0].tinhtien); 
+                  alert("Trả tiền = "+ bientam);
+                  if (bientam == 1){
+                          $.ajax({
+                              url: "/php/mua/guiData.php",
+                              method: "POST",
+                              data: {malayhang: parseInt(randomstring), sotien: parseInt(tempmax), 
+                                  comtam: parseInt(a1), comga: parseInt(a2), phobo: parseInt(a3), bunbohue: parseInt(a4), banhmi: parseInt(a5), goicuon: parseInt(a6)},
+                              success: function(){
+
+                                            $.ajax({
+                                              url: "/php/mua/layID.php",
+                                              method: "POST",
+                                              data: {malayhang: parseInt(randomstring)},
+                                              success: function(data){
+                                                Id = parseInt(data[0].stt); 
+                                                alert("Cảm ơn quý khách đã mua hàng! \n ID của bạn là : #" + Id + "\n Mã xác thực của bạn là : " + randomstring + "\n Xin nhập mã xác thực này ở quầy thanh toán.");
+                                                xoaluachon();
+                                                document.querySelector('#shopping-cart-form').classList.remove('active');}
+                                            });
+                                
+                                          }
+                          });
+                    }
+                  }
+                 });
+          };
+    };
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    let menu = document.querySelector('#menu-bars');
+    let navbar = document.querySelector('.navbar');
+    
+    menu.onclick = () =>{
+      menu.classList.toggle('fa-times');
+      navbar.classList.toggle('active');
+    }
+    
+    let section = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header .navbar a');
+    
+    window.onscroll = () =>{
+    
+      menu.classList.remove('fa-times');
+      navbar.classList.remove('active');
+    
+      section.forEach(sec =>{
+    
+        let top = window.scrollY;
+        let height = sec.offsetHeight;
+        let offset = sec.offsetTop - 150;
+        let id = sec.getAttribute('id');
+    
+        if(top >= offset && top < offset + height){
+          navLinks.forEach(links =>{
+            links.classList.remove('active');
+            document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+          });
+        };
+    
+      });
+    
+    }
+    
+    document.querySelector('#shopping-cart-icon').onclick = () =>{
+      document.querySelector('#shopping-cart-form').classList.toggle('active');
+    }
+    
+    document.querySelector('#close').onclick = () =>{
+      document.querySelector('#shopping-cart-form').classList.remove('active');
+    }
+    
+    function cart(){
+      document.querySelector('#shopping-cart-form').classList.toggle('active');
+    }
+    
+    var swiper = new Swiper(".home-slider", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      loop:true,
+    });
+    
+    var swiper = new Swiper(".review-slider", {
+      spaceBetween: 20,
+      centeredSlides: true,
+      autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+      },
+      loop:true,
+      breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+    
+    
+    //lazicode here ~~ deadline toi noi roiiiii, function no more
+    const thanhtien1 = document.querySelector("#thanhtien1"),
+    thanhtien2 = document.querySelector("#thanhtien2"),
+    thanhtien3 = document.querySelector("#thanhtien3"),
+    thanhtien4 = document.querySelector("#thanhtien4"),
+    thanhtien5 = document.querySelector("#thanhtien5"),
+    thanhtien6 = document.querySelector("#thanhtien6"),
+    thanhtienall = document.querySelector("#thanhtienall");
+    
+    var temp;
+    var tempmax = 0;
+    
+    
+    //1
+    const plus1 = document.querySelector("#plus1"),
+    minus1 = document.querySelector("#minus1"),
+    num1 = document.querySelector("#num1");
+    
+    let a1 = 0;
+    
+    function plus11(){
+      a1++;
+      temp = a1*giacomtam + ".000 đồng";
+      thanhtien1.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+        document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a1 = (a1 < 10) ? "0" + a1 : a1;
+      num1.innerText = a1;
+    }
+    
+    minus1.addEventListener("click", ()=>{
+      if(a1 > 0){
+        a1--;
+        temp = a1*giacomtam + ".000 đồng";
+        if (a1 == 0){temp = "";}
+        thanhtien1.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a1 = (a1 < 10) ? "0" + a1 : a1;
+        num1.innerText = a1;
+      }
+    });
+    
+    ////2
+    const plus2 = document.querySelector("#plus2"),
+    minus2 = document.querySelector("#minus2"),
+    num2 = document.querySelector("#num2");
+    
+    let a2 = 0;
+    
+    function plus22(){
+      a2++;
+      temp = a2*giacomga + ".000 đồng";
+      thanhtien2.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a2 = (a2 < 10) ? "0" + a2 : a2;
+      num2.innerText = a2;
+    };
+    
+    minus2.addEventListener("click", ()=>{
+      if(a2 > 0){
+        a2--;
+        temp = a2*giacomga + ".000 đồng";
+        if (a2 == 0){temp = "";}
+        thanhtien2.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a2 = (a2 < 10) ? "0" + a2 : a2;
+        num2.innerText = a2;
+      }
+    });
+    
+    ///3
+    const plus3 = document.querySelector("#plus3"),
+    minus3 = document.querySelector("#minus3"),
+    num3 = document.querySelector("#num3");
+    
+    let a3 = 0;
+    
+    function plus33(){
+      a3++;
+      temp = a3*giaphobo + ".000 đồng";
+      thanhtien3.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a3 = (a3 < 10) ? "0" + a3 : a3;
+      num3.innerText = a3;
+    };
+    
+    minus3.addEventListener("click", ()=>{
+      if(a3 > 0){
+        a3--;
+        temp = a3*giaphobo + ".000 đồng";
+        if (a3 == 0){temp = "";}
+        thanhtien3.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a3 = (a3 < 10) ? "0" + a3 : a3;
+        num3.innerText = a3;
+      }
+    });
+    
+    ///4
+    const plus4 = document.querySelector("#plus4"),
+    minus4 = document.querySelector("#minus4"),
+    num4 = document.querySelector("#num4");
+    
+    let a4 = 0;
+    
+    function plus44(){
+      a4++;
+      temp = a4*giabunbohue + ".000 đồng";
+      thanhtien4.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a4 = (a4 < 10) ? "0" + a4 : a4;
+      num4.innerText = a4;
+    };
+    
+    minus4.addEventListener("click", ()=>{
+      if(a4 > 0){
+        a4--;
+        temp = a4*giabunbohue + ".000 đồng";
+        if (a4 == 0){temp = "";}
+        thanhtien4.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a4 = (a4 < 10) ? "0" + a4 : a4;
+        num4.innerText = a4;
+      }
+    });
+    
+    ///5
+    const plus5 = document.querySelector("#plus5"),
+    minus5 = document.querySelector("#minus5"),
+    num5 = document.querySelector("#num5");
+    
+    let a5 = 0;
+    
+    function plus55(){
+      a5++;
+      temp = a5*giabanhmi + ".000 đồng";
+      thanhtien5.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a5 = (a5 < 10) ? "0" + a5 : a5;
+      num5.innerText = a5;
+    };
+    
+    minus5.addEventListener("click", ()=>{
+      if(a5 > 0){
+        a5--;
+        temp = a5*giabanhmi + ".000 đồng";
+        if (a5 == 0){temp = "";}
+        thanhtien5.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a5 = (a5 < 10) ? "0" + a5 : a5;
+        num5.innerText = a5;
+      }
+    });
+    
+    //6
+    const plus6 = document.querySelector("#plus6"),
+    minus6 = document.querySelector("#minus6"),
+    num6 = document.querySelector("#num6");
+    
+    let a6 = 0;
+    
+    function plus66(){
+      a6++;
+      temp = a6*giagoicuon + ".000 đồng";
+      thanhtien6.innerText = temp;
+      tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+      a6 = (a6 < 10) ? "0" + a6 : a6;
+      num6.innerText = a6;
+    };
+    
+    minus6.addEventListener("click", ()=>{
+      if(a6 > 0){
+        a6--;
+        temp = a6*giagoicuon + ".000 đồng";
+        if (a6 == 0){temp = "";}
+        thanhtien6.innerText = temp;
+        tempmax = (parseInt(a1)*giacomtam + parseInt(a2)*giacomga + parseInt(a3)*giaphobo + parseInt(a4)*giabunbohue + parseInt(a5)*giabanhmi + parseInt(a6)*giagoicuon);
+      document.querySelector('#cart-num').innerText = parseInt(a1) + parseInt(a2) + parseInt(a3) + parseInt(a4) + parseInt(a5) + parseInt(a6);
+    if (tempmax == 0){ thanhtienall.innerText = ""; document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";} 
+    else {thanhtienall.innerText = tempmax.toString() + ".000 đồng"; document.getElementById("shopping-cart-icon").style = "background: var(--green); color:#fff;";}
+        a6 = (a6 < 10) ? "0" + a6 : a6;
+        num6.innerText = a6;
+      }
+    });
+    
+    function xoaluachon(){
+      a1 = a2 = a3 = a4 = a5 = a6 = tempmax = 0;
+      num1.innerText = num2.innerText = num3.innerText = num4.innerText = num5.innerText = num6.innerText = "00";
+      thanhtien1.innerText = thanhtien2.innerText = thanhtien3.innerText = thanhtien4.innerText = thanhtien5.innerText = thanhtien6.innerText = thanhtienall.innerText = "";
+      document.getElementById("shopping-cart-icon").style = "color:var(--black); background: #eee;";
+      document.querySelector('#cart-num').innerText = 0;
+    }
+    
+    var characters = "0123456789";
+    var lenString = 5;
+    var randomstring = '';
+    var rnum;
+
+</script>
+</body>
+</html>
